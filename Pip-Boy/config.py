@@ -5,6 +5,11 @@ HEIGHT = 300
 
 GPIO_AVAILABLE = False
 SOUND_ENABLED = False
+COLOR_GREEN = (26, 255, 128)
+COLOR_YELLOW = (150, 200, 128)
+COLOR_BLUE = (10, 50, 200)
+COLORS = [(26, 255, 128), (150, 200, 128), (10, 50, 200)]
+COLOR_CURRENT = COLOR_GREEN
 # OUTPUT_WIDTH = 320
 # OUTPUT_HEIGHT = 240
 
@@ -14,6 +19,12 @@ MAP_FOCUS = (-102.3016145, 21.8841274)
 EVENTS = {
 	'SONG_END': pygame.USEREVENT + 1
 }
+
+WEATHER_ICON = {
+	'Clear': "F:/Java/Pip-Boy/Pip-Boy/Pip-Boy/images/sunny.png",
+	'Clouds': "F:/Java/Pip-Boy/Pip-Boy/Pip-Boy/images/cloudy.png", 
+	'rainy':"/images/rainy.png"
+	}
 
 ACTIONS = {
 	pygame.K_F1: "module_stats",

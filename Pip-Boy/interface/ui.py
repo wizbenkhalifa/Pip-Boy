@@ -21,21 +21,23 @@ class Interface():
         self.font2 = pygame.font.Font('monofonto.ttf', 15)
         global screen
         screen = screen2
-        self.color = (26, 255, 128)
+        self.color = config.COLOR_CURRENT
         self._image_library = {}
         self._date = None
         self.date = datetime.datetime.now().strftime("%d.%m.%y.%H:%M:%S")
-        self.scanlines = Scanlines()
         
     def render(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
         self.background()
-        self.scanlines.run()
         self.interface()
         self.texts()
         
     def update(self):
         new_date = datetime.datetime.now().strftime("%d.%m.%y.%H:%M:%S")
         if self.date != new_date:
+            if self.color != config.COLOR_CURRENT:
+                self.color = config.COLOR_CURRENT
             self.background()
             self.scanlines.run()
             self.interface()
@@ -103,9 +105,11 @@ class Selection():
         self.x = x
         self.y = y
         self.name = name
-        self.color = color
+        self.color = config.COLOR_CURRENT
         self.selected = False
     def render(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
         label = config.genFont.render(self.name, 1, self.color)
         screen.blit(label, (self.x, self.y))
         if self.selected:
@@ -117,38 +121,3 @@ class Selection():
         print(self.name)
         pygame.quit()
         
-class Scanlines(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
-        self.color = (26, 255, 128)
-        self.lines = []
-        self.nLines = 0
-        self.largeLines = []
-        self.totLines = 0
-    def run(self):
-        if self.nLines == 0:
-                self.lines.append(Line(12, 0, self.color, 3))
-                self.nLines += 1
-                self.totLines += 1
-        if self.lines[self.nLines - 1].y > config.WIDTH / 3:
-            self.lines.append(Line(12, 0, self.color, 3))
-            self.nLines += 1
-            self.totLines += 1
-            print("Added line")
-        for l in self.lines:
-            if l.y >= config.HEIGHT:
-                self.lines.remove(l)
-                print("Removed line")
-                self.nLines -= 1
-            l.y = l.y + 3
-            screen.blit(l.s, (l.x, l.y))  # (0,0) are the top-left coordinates
-            # print("Line", l.y, "Nlines: ", self.nLines)
-        
-class Line():
-    def __init__(self, x, y, color, height):
-        self.color = color
-        self.x = x
-        self.y = y
-        self.s = pygame.Surface((config.WIDTH - 15, height))  # the size of your rect
-        self.s.set_alpha(50)  # alpha level
-        self.s.fill(self.color)  # this fills the entire surface

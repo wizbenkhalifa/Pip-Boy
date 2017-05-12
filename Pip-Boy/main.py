@@ -11,19 +11,20 @@ from interface.Map import Map
 from interface.documents import documents
 from interface.media import media
 from pygame.time import delay
-from interface.ui import Scanlines
+from interface.Scanlines import Scanlines,Line
 from threading import Lock
+from interface.Settings import Settings
 
 
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 done = False
 selected_menu = 0
-menu_list = [home(screen), documents(screen), media(screen), Map(screen)]
-lock = Lock()
+menu_list = [home(screen), documents(screen), media(screen), Settings(screen)]
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
-    scanlines = Scanlines()
+    scanlines = Scanlines(screen)
+    scanlines.run()
     while not done:
         menu_list[selected_menu].renderInterface()
         for event in pygame.event.get():

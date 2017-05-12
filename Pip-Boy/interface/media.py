@@ -18,7 +18,7 @@ class media(object):
         global screen
         screen = self.screen
         self.menu = "MEDIA"
-        self.color = (26, 255, 128)
+        self.color = config.COLOR_GREEN
         self._image_library = {}
         self._date = None
         self.selections = []
@@ -28,6 +28,8 @@ class media(object):
         self.getSongs()
                 
     def renderInterface(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
         self.ui.render()
         y = 50
         i = self.selectionIndex
@@ -38,7 +40,6 @@ class media(object):
             y += 20
         for s in self.selections:
             s.selected = False
-        print(self.selectionIndex)
         self.selections[self.selectionIndex].selected = True
         # scanlines = Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)])
         # scanlines.render(5)
@@ -65,10 +66,12 @@ class Song():
         self.x = x
         self.y = y
         self.name = name
-        self.color = color
+        self.color = config.COLOR_CURRENT
         self.selected = False
         self.path = "C:/Users/WiZ/Music/" + self.name + ".mp3"
     def render(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
         label = config.genFont.render(self.name, 1, self.color)
         screen.blit(label, (self.x, self.y))
         if self.selected:
