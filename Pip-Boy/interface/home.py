@@ -3,6 +3,7 @@ Created on 07 apr 2017
 
 @author: benkhalifayoussef
 '''
+
 import pygame
 import config
 import os
@@ -16,15 +17,18 @@ class home(object):
         self.screen = screen
         self.menu = "HOME"
         self.font = pygame.font.Font('monofonto.ttf', 18)
-        self.color = config.COLOR_GREEN
+        self.color = config.COLOR_CURRENT
         self._image_library = {}
         self._date = None
         self.selections = [Selection(50,50, "SHUTDOWN", self.color), Selection(50,100, "RESTART", self.color), Selection(50,150, "SLEEP", self.color)]
         self.ui = Interface(self.menu, self.screen)
         self.selectionIndex = 0
         self.getWeather()
+        self.x = 20
                             
     def renderInterface(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
         self.ui.render()
         for s in self.selections:
             s.render()
@@ -32,6 +36,10 @@ class home(object):
             s.selected=False
         self.selections[self.selectionIndex].selected = True
         self.printWeather()
+        pygame.draw.line(self.screen, self.color, (30, config.HEIGHT-30), (77, config.HEIGHT-30), 2)
+        pygame.draw.line(self.screen, self.color, (30, config.HEIGHT-30), (30, config.HEIGHT-12), 2)
+        pygame.draw.line(self.screen, self.color, (30, config.HEIGHT-12), (77, config.HEIGHT-12), 2)
+        pygame.draw.line(self.screen, self.color, (77, config.HEIGHT-30), (77, config.HEIGHT-12), 2)
         #scanlines = Scanlines(800, 480, 3, 1, [(0, 13, 3, 50), (6, 42, 22, 100), (0, 13, 3, 50)])
         #scanlines.render(5)
     def onSelection(self):
@@ -40,14 +48,16 @@ class home(object):
     def printWeather(self):
         label = self.font.render(self.weather, 1, self.color)
         self.screen.blit(label, (200, 200))
-        try:
-            img = img=pygame.image.load(config.WEATHER_ICON[self.weather])
+        """try:
+            #img = img=pygame.image.load(config.WEATHER_ICON[self.weather])
             #img = pygame.transform.scale(img, (150, 150))
-            self.screen.blit(img,(275,25))
+            #self.screen.blit(img,(275,25))
             
         except KeyError:
             print("Immagine non trovata")
-        
+        """
+        label = self.font.render(self.temperature, 1, self.color)
+        self.screen.blit(label, (240, 200))
     def get_image(self, path):
         # global _image_library
         image = self._image_library.get(path)
