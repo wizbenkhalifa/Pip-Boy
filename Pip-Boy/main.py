@@ -42,10 +42,11 @@ if __name__ == '__main__':
         print(rot_cod)
         menu_list[selected_menu].renderInterface()
         scanlines.run()
-        print(left)
-        print(right)
+        
         if rot_cod[2]==0 & rot_cod[1]==1:   
             left = 1
+            print(left)
+            print(right)
         if left == 1:
             if selected_menu >= menu_list.__len__() - 1:
                 selected_menu = 0
@@ -59,6 +60,8 @@ if __name__ == '__main__':
                 right = 0
         if rot_cod[1] == 0 & rot_cod[2]==1:
             right =1
+            print(left)
+            print(right)
         if right == 1:
             if selected_menu <= 0:
                 selected_menu = menu_list.__len__() - 1
