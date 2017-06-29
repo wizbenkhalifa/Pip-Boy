@@ -21,9 +21,10 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)
 GPIO.setup(5, GPIO.IN)
 GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(11, GPIO.IN)
+GPIO.setup(11, GPIO.OUT)
 left = 0
 right = 0
+GPIO.output(11,1)
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 pygame.display.toggle_fullscreen()
