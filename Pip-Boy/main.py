@@ -17,9 +17,8 @@ from threading import Lock
 from interface.Settings import Settings
 from interface.Gallery import Gallery
 from GPIOThread import GPIOT
-global left
+
 left = 0
-global right 
 right = 0
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
