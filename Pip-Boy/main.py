@@ -16,7 +16,6 @@ from interface.Scanlines import Scanlines,Line
 from threading import Lock
 from interface.Settings import Settings
 from interface.Gallery import Gallery
-from GPIOThread import GPIOT
 
 left = 0
 right = 0
