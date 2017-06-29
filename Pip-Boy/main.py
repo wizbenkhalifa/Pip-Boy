@@ -42,6 +42,8 @@ if __name__ == '__main__':
         print(rot_cod)
         menu_list[selected_menu].renderInterface()
         scanlines.run()
+        print(left)
+        print(right)
         if rot_cod[2]==0 & rot_cod[1]==1:   
             left = 1
         if left == 1:
