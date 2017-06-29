@@ -8,11 +8,7 @@ import threading
 import time
 
 from time import sleep
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(3, GPIO.IN)
-GPIO.setup(5, GPIO.IN)
-GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(11, GPIO.IN)
+
 
 exitFlag = 0
 

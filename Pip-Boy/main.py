@@ -17,7 +17,11 @@ from threading import Lock
 from interface.Settings import Settings
 from interface.Gallery import Gallery
 import RPi.GPIO as GPIO
-
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(3, GPIO.IN)
+GPIO.setup(5, GPIO.IN)
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(11, GPIO.IN)
 left = 0
 right = 0
 pygame.init()
