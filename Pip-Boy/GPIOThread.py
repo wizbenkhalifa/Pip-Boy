@@ -16,7 +16,7 @@ GPIO.setup(11, GPIO.IN)
 
 exitFlag = 0
 
-class GPIO (threading.Thread):
+class GPIOT(threading.Thread):
     def __init__(self, left, right):
         threading.Thread.__init__(self)
         self.left = left
