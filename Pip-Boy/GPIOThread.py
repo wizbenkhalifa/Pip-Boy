@@ -22,18 +22,18 @@ class GPIOT(threading.Thread):
         threading.Thread.__init__(self)
         self.left = left
         self.right = right
+        self.rot_cod = [0,0,0]
     def run(self):
        while True:
-            rot_cod = [0,0,0]
-            rot_cod[0]=GPIO.input(3)
-            rot_cod[1]=GPIO.input(5)
-            rot_cod[2]=GPIO.input(7)
+            self.rot_cod[0]=GPIO.input(3)
+            self.rot_cod[1]=GPIO.input(5)
+            self.rot_cod[2]=GPIO.input(7)
             #print(rot_cod)
-            if rot_cod[2]==0 & rot_cod[1]==1:   
+            if self.rot_cod[2]==0 & self.rot_cod[1]==1:   
                 self.left = 1
                 print(self.left)
                 print(self.right)
-            if rot_cod[1] == 0 & rot_cod[2]==1:
+            if self.rot_cod[1] == 0 & self.rot_cod[2]==1:
                 self.right =1
                 print(self.left)
                 print(self.right)
