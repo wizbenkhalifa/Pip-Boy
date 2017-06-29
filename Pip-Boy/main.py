@@ -40,46 +40,45 @@ if __name__ == '__main__':
         print(rot_cod)
         menu_list[selected_menu].renderInterface()
         scanlines.run()
+        if rot_cod[2]==0:   
+            if selected_menu >= menu_list.__len__() - 1:
+                selected_menu = 0
+                menu_list[selected_menu].renderInterface()
+                print("Menu %n %n", selected_menu, menu_list.__len__())
+            else:
+                selected_menu = selected_menu + 1
+                menu_list[selected_menu].renderInterface()
+                print("Menu %n %n", selected_menu, menu_list.__len__())
+        if rot_cod[1] == 0:
+            if selected_menu <= 0:
+                selected_menu = menu_list.__len__() - 1
+                menu_list[selected_menu].renderInterface()
+                print("Menu %n %n", selected_menu, menu_list.__len__())
+            else:
+                selected_menu = selected_menu - 1
+                menu_list[selected_menu].renderInterface()
+                print("Menu %n %n", selected_menu, menu_list.__len__())
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                     done = True
-            if event.type == pygame.KEYDOWN | rot_cod[2]==0:
-                if event.key == pygame.K_RIGHT:
-                    if selected_menu >= menu_list.__len__() - 1:
-                        selected_menu = 0
-                        menu_list[selected_menu].renderInterface()
-                        print("Menu %n %n", selected_menu, menu_list.__len__())
-                    else:
-                        selected_menu = selected_menu + 1
-                        menu_list[selected_menu].renderInterface()
-                        print("Menu %n %n", selected_menu, menu_list.__len__())
-                if event.key == pygame.K_LEFT | rot_cod[1] == 0:
-                    if selected_menu <= 0:
-                        selected_menu = menu_list.__len__() - 1
-                        menu_list[selected_menu].renderInterface()
-                        print("Menu %n %n", selected_menu, menu_list.__len__())
-                    else:
-                        selected_menu = selected_menu - 1
-                        menu_list[selected_menu].renderInterface()
-                        print("Menu %n %n", selected_menu, menu_list.__len__())
-                if event.key == pygame.K_DOWN:
-                    if menu_list[selected_menu].selectionIndex < menu_list[selected_menu].selections.__len__() - 1:
-                        menu_list[selected_menu].selectionIndex += 1
-                    else:
-                        menu_list[selected_menu].selectionIndex = 0
-                if event.key == pygame.K_UP:
-                    if menu_list[selected_menu].selectionIndex > 0:
-                        menu_list[selected_menu].selectionIndex -= 1
-                    else:
-                        menu_list[selected_menu].selectionIndex = 2
-                if event.key == pygame.K_RETURN:
-                    menu_list[selected_menu].onSelection()
-                if event.key == pygame.K_PLUS:
-                    if selected_menu == 4:
-                        menu_list[selected_menu].onIncrement()
-                if event.key == pygame.K_RETURN:
-                    if selected_menu == 4:
-                        menu_list[selected_menu].onDecrement()
+            if event.key == pygame.K_DOWN:
+                if menu_list[selected_menu].selectionIndex < menu_list[selected_menu].selections.__len__() - 1:
+                    menu_list[selected_menu].selectionIndex += 1
+                else:
+                    menu_list[selected_menu].selectionIndex = 0
+            if event.key == pygame.K_UP:
+                if menu_list[selected_menu].selectionIndex > 0:
+                    menu_list[selected_menu].selectionIndex -= 1
+                else:
+                    menu_list[selected_menu].selectionIndex = 2
+            if event.key == pygame.K_RETURN:
+                menu_list[selected_menu].onSelection()
+            if event.key == pygame.K_PLUS:
+                if selected_menu == 4:
+                    menu_list[selected_menu].onIncrement()
+            if event.key == pygame.K_RETURN:
+                if selected_menu == 4:
+                    menu_list[selected_menu].onDecrement()
                         
         pygame.display.flip()
         delay(100)
