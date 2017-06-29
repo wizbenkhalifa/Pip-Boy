@@ -25,6 +25,7 @@ screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 done = False
 selected_menu = 0
 global menu_list
+rot_cod = [0,0,0]
 menu_list = [home(screen), media(screen), Gallery(screen), Map(screen), Settings(screen)]
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
@@ -36,6 +37,15 @@ if __name__ == '__main__':
         scanlines.run()
         print(left)
         print(right)
+        rot_cod[0]=GPIO.input(3)
+        rot_cod[1]=GPIO.input(5)
+        rot_cod[2]=GPIO.input(7)
+        #print(rot_cod)
+        if rot_cod[2]==0 and rot_cod[1]==1:   
+            left = 1
+            
+        if rot_cod[1] == 0 and rot_cod[2]==1:
+            right =1
         if left == 1:
             if selected_menu >= menu_list.__len__() - 1:
                 selected_menu = 0
