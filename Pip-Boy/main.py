@@ -45,10 +45,12 @@ if __name__ == '__main__':
         rot_cod[2]=GPIO.input(7)
         #print(rot_cod)
         if rot_cod[2]==0 and rot_cod[1]==1:
+            delay(100)
             if rot_cod[2]==1 and rot_cod[1]==1: 
                 left = 1
             
         if rot_cod[1] == 0 and rot_cod[2]==1:
+            delay(100)
             if rot_cod[2]==1 and rot_cod[1]==1: 
                 right =1
         if left == 1:
@@ -77,10 +79,7 @@ if __name__ == '__main__':
             if event.type == pygame.QUIT:
                     done = True
         if rot_cod[0]==0:
-            if menu_list[selected_menu].selectionIndex < menu_list[selected_menu].selections.__len__() - 1:
-                menu_list[selected_menu].selectionIndex += 1
-            else:
-                menu_list[selected_menu].selectionIndex = 0
+           menu_list[selected_menu].onSelection()
         """
         if event.key == pygame.K_UP:
             if menu_list[selected_menu].selectionIndex > 0:
