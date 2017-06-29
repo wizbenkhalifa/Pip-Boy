@@ -27,7 +27,7 @@ class GPIOT(threading.Thread):
             rot_cod[0]=GPIO.input(3)
             rot_cod[1]=GPIO.input(5)
             rot_cod[2]=GPIO.input(7)
-            print(rot_cod)
+            #print(rot_cod)
             if rot_cod[2]==0 & rot_cod[1]==1:   
                 self.left = 1
                 print(self.left)
