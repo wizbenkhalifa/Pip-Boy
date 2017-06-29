@@ -81,6 +81,7 @@ if __name__ == '__main__':
                 menu_list[selected_menu].selectionIndex += 1
             else:
                 menu_list[selected_menu].selectionIndex = 0
+        """
         if event.key == pygame.K_UP:
             if menu_list[selected_menu].selectionIndex > 0:
                 menu_list[selected_menu].selectionIndex -= 1
@@ -94,7 +95,7 @@ if __name__ == '__main__':
         if event.key == pygame.K_RETURN:
             if selected_menu == 4:
                 menu_list[selected_menu].onDecrement()
-                        
+        """                
         pygame.display.flip()
-        delay(60)
+        delay(100)
     
