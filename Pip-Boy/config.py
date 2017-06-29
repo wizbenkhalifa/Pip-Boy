@@ -21,10 +21,10 @@ EVENTS = {
 }
 
 WEATHER_ICON = {
-	'Clear': "weather_icons/005-weather.png",
-	'Clouds':"weather_icons/007-cloudy.png", 
-	'rainy':"weather_icons/008-rain.png",
-	'temp': "weather_icons/weather.png"
+	'Clear': "weather_icons\005-weather.png",
+	'Clouds':"weather_icons\007-cloudy.png", 
+	'rainy':"weather_icons\008-rain.png",
+	'temp': "weather_icons\weather.png"
 	}
 
 ACTIONS = {

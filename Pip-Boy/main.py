@@ -73,6 +73,7 @@ if __name__ == '__main__':
                 right = 0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                    os.system("sudo shutdown now")
                     done = True
         if rot_cod[0]==0:
            menu_list[selected_menu].onSelection()
