@@ -8,8 +8,6 @@ import threading
 import time
 import RPi.GPIO as GPIO
 from time import sleep
-from main import left
-from main import right
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)
 GPIO.setup(5, GPIO.IN)
