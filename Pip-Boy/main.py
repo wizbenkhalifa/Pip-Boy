@@ -32,6 +32,8 @@ menu_list = [home(screen), media(screen), Gallery(screen), Map(screen), Settings
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
     scanlines = Scanlines(screen)
+    left = 0
+    right = 0
     while not done:
         rot_cod = [0,0,0]
         rot_cod[0]=GPIO.input(3)
@@ -40,24 +42,32 @@ if __name__ == '__main__':
         print(rot_cod)
         menu_list[selected_menu].renderInterface()
         scanlines.run()
-        if rot_cod[2]==0:   
+        if rot_cod[2]==0 & rot_cod[1]==1:   
+            left = 1
+        if left == 1:
             if selected_menu >= menu_list.__len__() - 1:
                 selected_menu = 0
                 menu_list[selected_menu].renderInterface()
                 print("Menu %n %n", selected_menu, menu_list.__len__())
+                left = 0
             else:
                 selected_menu = selected_menu + 1
                 menu_list[selected_menu].renderInterface()
                 print("Menu %n %n", selected_menu, menu_list.__len__())
-        if rot_cod[1] == 0:
+                right = 0
+        if rot_cod[1] == 0 & rot_cod[2]==1:
+            right =1
+        if right == 1:
             if selected_menu <= 0:
                 selected_menu = menu_list.__len__() - 1
                 menu_list[selected_menu].renderInterface()
                 print("Menu %n %n", selected_menu, menu_list.__len__())
+                right = 0
             else:
                 selected_menu = selected_menu - 1
                 menu_list[selected_menu].renderInterface()
                 print("Menu %n %n", selected_menu, menu_list.__len__())
+                right = 0
         """for event in pygame.event.get():
             if event.type == pygame.QUIT:
                     done = True
