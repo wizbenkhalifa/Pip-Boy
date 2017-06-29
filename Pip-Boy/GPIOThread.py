@@ -6,7 +6,7 @@ Created on Jun 29, 2017
 
 import threading
 import time
-import RPi.GPIO as GPIO
+
 from time import sleep
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)
