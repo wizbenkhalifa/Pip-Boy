@@ -50,7 +50,8 @@ class home(object):
         label = self.font.render(self.weather, 1, self.color)
         self.screen.blit(label, (295, 198))
         try:
-            img = self.get_image(config.WEATHER_ICON[self.weather])
+            dir = os.path.dirname(__file__)
+            img = self.get_image(os.path.join(dir, config.WEATHER_ICON[self.weather]))
             img = pygame.transform.scale(img, (125, 125))
             self.screen.blit(img,(300,55))
             dir = os.path.dirname(__file__)

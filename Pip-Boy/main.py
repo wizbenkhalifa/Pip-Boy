@@ -45,14 +45,10 @@ if __name__ == '__main__':
         rot_cod[2]=GPIO.input(7)
         #print(rot_cod)
         if rot_cod[2]==0 and rot_cod[1]==1:
-            delay(100)
-            if rot_cod[2]==1 and rot_cod[1]==1: 
-                left = 1
+            left = 1
             
         if rot_cod[1] == 0 and rot_cod[2]==1:
-            delay(100)
-            if rot_cod[2]==1 and rot_cod[1]==1: 
-                right =1
+            right =1
         if left == 1:
             if selected_menu >= menu_list.__len__() - 1:
                 selected_menu = 0
