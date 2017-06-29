@@ -17,7 +17,10 @@ from threading import Lock
 from interface.Settings import Settings
 from interface.Gallery import Gallery
 from GPIOThread import GPIOT
-
+global left
+left = 0
+global right 
+right = 0
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 done = False
@@ -27,8 +30,6 @@ menu_list = [home(screen), media(screen), Gallery(screen), Map(screen), Settings
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
     scanlines = Scanlines(screen)
-    left = 0
-    right = 0
     GPIO = GPIOT(left, right)
     GPIO.start()
     while not done:

@@ -8,7 +8,8 @@ import threading
 import time
 import RPi.GPIO as GPIO
 from time import sleep
-
+from main import left
+from main import right
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)
 GPIO.setup(5, GPIO.IN)
@@ -30,9 +31,9 @@ class GPIOT(threading.Thread):
             self.rot_cod[2]=GPIO.input(7)
             #print(rot_cod)
             if self.rot_cod[2]==0 and self.rot_cod[1]==1:   
-                self.left = 1
+                left = 1
                 
             if self.rot_cod[1] == 0 and self.rot_cod[2]==1:
-                self.right =1
+                right =1
                 
        
