@@ -29,13 +29,12 @@ class GPIOT(threading.Thread):
             self.rot_cod[1]=GPIO.input(5)
             self.rot_cod[2]=GPIO.input(7)
             #print(rot_cod)
-            if self.rot_cod[2]==0 & self.rot_cod[1]==1:   
+            if self.rot_cod[2]==0 and self.rot_cod[1]==1:   
                 self.left = 1
                 print(self.left)
                 print(self.right)
-            if self.rot_cod[1] == 0 & self.rot_cod[2]==1:
+            if self.rot_cod[1] == 0 and self.rot_cod[2]==1:
                 self.right =1
                 print(self.left)
                 print(self.right)
-            sleep(0.1)
        
