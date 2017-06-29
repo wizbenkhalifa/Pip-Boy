@@ -43,7 +43,7 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                     done = True
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN | rot_cod == [1,1,0]:
                 if event.key == pygame.K_RIGHT:
                     if selected_menu >= menu_list.__len__() - 1:
                         selected_menu = 0
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                         selected_menu = selected_menu + 1
                         menu_list[selected_menu].renderInterface()
                         print("Menu %n %n", selected_menu, menu_list.__len__())
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT | rot_cod == [1,0,1]:
                     if selected_menu <= 0:
                         selected_menu = menu_list.__len__() - 1
                         menu_list[selected_menu].renderInterface()
