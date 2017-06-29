@@ -16,8 +16,13 @@ from interface.Scanlines import Scanlines,Line
 from threading import Lock
 from interface.Settings import Settings
 from interface.Gallery import Gallery
+import RPi.GPIO as GPIO
 
-
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(3, GPIO.IN)
+GPIO.setup(5, GPIO.IN)
+GPIO.setup(7, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(11, GPIO.IN)
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 done = False
@@ -28,6 +33,11 @@ if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
     scanlines = Scanlines(screen)
     while not done:
+        rot_cod = [0,0,0]
+        rot_cod[0]=GPIO.input(3)
+        rot_cod[1]=GPIO.input(5)
+        rot_cod[2]=GPIO.input(7)
+        print(rot_cod)
         menu_list[selected_menu].renderInterface()
         scanlines.run()
         for event in pygame.event.get():
