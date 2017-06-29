@@ -31,10 +31,8 @@ class GPIOT(threading.Thread):
             #print(rot_cod)
             if self.rot_cod[2]==0 and self.rot_cod[1]==1:   
                 self.left = 1
-                print(self.left)
-                print(self.right)
+                
             if self.rot_cod[1] == 0 and self.rot_cod[2]==1:
                 self.right =1
-                print(self.left)
-                print(self.right)
+                
        

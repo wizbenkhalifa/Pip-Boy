@@ -34,6 +34,8 @@ if __name__ == '__main__':
     while not done:
         menu_list[selected_menu].renderInterface()
         scanlines.run()
+        print(left)
+        print(right)
         if left == 1:
             if selected_menu >= menu_list.__len__() - 1:
                 selected_menu = 0
