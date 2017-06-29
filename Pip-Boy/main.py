@@ -29,8 +29,6 @@ menu_list = [home(screen), media(screen), Gallery(screen), Map(screen), Settings
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
     scanlines = Scanlines(screen)
-    GPIO = GPIOT(left, right)
-    GPIO.start()
     while not done:
         menu_list[selected_menu].renderInterface()
         scanlines.run()
