@@ -15,7 +15,7 @@ from pygame.time import delay
 from interface.Scanlines import Scanlines,Line
 from threading import Lock
 from interface.Settings import Settings
-from interface.Radio import Radio
+from interface.Gallery import Gallery
 
 
 pygame.init()
@@ -23,7 +23,7 @@ screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
 done = False
 selected_menu = 0
 global menu_list
-menu_list = [home(screen), media(screen), Radio(screen), Map(screen), Settings(screen)]
+menu_list = [home(screen), media(screen), Gallery(screen), Map(screen), Settings(screen)]
 if __name__ == '__main__':
     menu_list[selected_menu].renderInterface()
     scanlines = Scanlines(screen)

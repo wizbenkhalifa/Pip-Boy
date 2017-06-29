@@ -11,6 +11,7 @@ import datetime
 from interface.ui import Interface
 from interface.ui import Selection
 import pyowm
+import unicodedata
 class home(object):
    
     def __init__(self, screen):
@@ -47,17 +48,20 @@ class home(object):
     
     def printWeather(self):
         label = self.font.render(self.weather, 1, self.color)
-        self.screen.blit(label, (200, 200))
-        """try:
-            #img = img=pygame.image.load(config.WEATHER_ICON[self.weather])
-            #img = pygame.transform.scale(img, (150, 150))
-            #self.screen.blit(img,(275,25))
-            
-        except KeyError:
+        self.screen.blit(label, (295, 198))
+        try:
+            img = self.get_image(config.WEATHER_ICON[self.weather])
+            img = pygame.transform.scale(img, (125, 125))
+            self.screen.blit(img,(300,55))
+            dir = os.path.dirname(__file__)
+            img = self.get_image(os.path.join(dir, config.WEATHER_ICON["temp"]))
+            img = pygame.transform.scale(img, (25, 30))
+            self.screen.blit(img,(350,195))
+        except Exception:
             print("Immagine non trovata")
-        """
+        
         label = self.font.render(self.temperature, 1, self.color)
-        self.screen.blit(label, (240, 200))
+        self.screen.blit(label, (373, 198))
     def get_image(self, path):
         # global _image_library
         image = self._image_library.get(path)
@@ -77,6 +81,7 @@ class home(object):
         self.weather = weather.replace(">", "")
         temp = str(w.get_temperature('celsius')).split(",")
         self.temperature = temp[0].split(":")[1]
+        
         self.tMax = temp[1].split(":")[1]
         self.tMin = temp[2].split(":")[1]
         #print(weather," ",temperature,"-",tMax,"-",tMin)

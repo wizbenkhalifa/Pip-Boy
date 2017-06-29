@@ -17,7 +17,7 @@ from asyncio.tasks import sleep
 class Interface():
     def __init__(self, maintxt, screen2):
         self.maintxt = maintxt
-        self.menuList = ["Home", "Media", "Radio", "Map", "Settings"]
+        self.menuList = ["Home", "Media", "Gallery", "Map", "Settings"]
         self.font = pygame.font.Font('monofonto.ttf', 18)
         self.font2 = pygame.font.Font('monofonto.ttf', 15)
         global screen

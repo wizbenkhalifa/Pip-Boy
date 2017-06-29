@@ -10,16 +10,16 @@ import datetime
 from interface.ui import Interface
 from interface.ui import Selection
 import pyowm
-class Radio(object):
+class Gallery(object):
    
     def __init__(self, screen):
         self.screen = screen
-        self.menu = "RADIO"
+        self.menu = "GALLERY"
         self.font = pygame.font.Font('monofonto.ttf', 18)
         self.color = config.COLOR_CURRENT
         self._image_library = {}
         self._date = None
-        self.selections = [Selection(50,50, "Radio", self.color)]
+        self.selections = [Selection(50,50, "Gallery", self.color)]
         self.ui = Interface(self.menu, self.screen)
         self.selectionIndex = 0
         self.x = 250
@@ -51,3 +51,28 @@ class Radio(object):
                 image = pygame.image.load(canonicalized_path)
                 self._image_library[path] = image
         return image
+    
+class Image():
+    def __init__(self, x, y, name, color):
+        self.x = x
+        self.y = y
+        self.image = image
+        self.selected = False
+        self.path = "C:/Users/WiZ/Images/" + self.name + ".mp3"
+    def render(self):
+        if self.color != config.COLOR_CURRENT:
+            self.color = config.COLOR_CURRENT
+        if len(self.name) > 30:
+            self.name = self.name[:-(len(self.name) - 30)]
+        label = config.genFont.render(self.name, 1, self.color)
+        screen.blit(label, (self.x, self.y))
+        if self.selected:
+            pygame.draw.line(screen, self.color, (self.x - 5, self.y - 2), (self.x + 250 + 3, self.y - 2), 2)
+            pygame.draw.line(screen, self.color, (self.x - 5, self.y - 2), (self.x - 5, self.y + 17 + 2), 2)
+            pygame.draw.line(screen, self.color, (self.x - 5, self.y + 17 + 2), (self.x + 250 + 3, self.y + 17 + 2), 2)
+            
+            pygame.draw.line(screen, self.color, (self.x + 250 + 3, self.y - 2), (self.x + 250 + 3, self.y + 2 + 17), 2)
+    def onSelection(self, screen):
+        #print(self.name)
+        pygame.quit()
+        

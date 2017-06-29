@@ -11,6 +11,7 @@ import config
 import os
 from pygame import mixer
 from interface.ui import Interface, Selection
+
 class media(object):
     
     def __init__(self, screen2):
@@ -29,7 +30,9 @@ class media(object):
         self.getSongs()
         self.x = 100
         self.selection = 0
-        self.playing
+        global playing
+        playing = "------------------"
+        
         """self.switch = Selection(200,50, "Images", self.color)
         self.switch.render()"""
                 
@@ -40,26 +43,55 @@ class media(object):
         #self.switch.render()
         y = 50
         i = self.selectionIndex
-        if self.selection == 0:
-            print(self.selections.__len__())
-            while i<self.selectionIndex+10:
-                if i< self.selections.__len__():
-                    self.selections[i].y = y
-                    self.selections[i].render()
-                    i += 1
-                    y += 20
-                else:
-                    break
-            for s in self.selections:
-                s.selected = False
+        if self.selections.__len__()> 0:
+            if self.selection == 0:
+                #print(self.selections.__len__())
+                while i<self.selectionIndex+10:
+                    if i< self.selections.__len__():
+                        self.selections[i].y = y
+                        self.selections[i].render()
+                        i += 1
+                        y += 20
+                    else:
+                        break
+                for s in self.selections:
+                    s.selected = False
             self.selections[self.selectionIndex].selected = True
-        elif self.selection ==1:
-            print("Images")
+        label = config.genFont.render(playing, 1, self.color)
+        self.screen.blit(label, (295, 100))
+        img = self.get_image("F:/Java/Pip-Boy/images/006-play-button.png")
+        print(playing)
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(300,55))
+        img = self.get_image("F:/Java/Pip-Boy/images/005-pause.png")
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(340,55))
+        img = self.get_image("F:/Java/Pip-Boy/images/002-stop.png")
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(380,55))
+        img = self.get_image("F:/Java/Pip-Boy/images/004-speaker.png")
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(300,120))
+        img = self.get_image("F:/Java/Pip-Boy/images/003-speaker-1.png")
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(340,120))
+        img = self.get_image("F:/Java/Pip-Boy/images/001-speaker-2.png")
+        img = pygame.transform.scale(img, (35, 35))
+        self.screen.blit(img,(380,120))
         pygame.draw.line(self.screen, self.color, (102, config.HEIGHT-30), (157, config.HEIGHT-30), 2)
         pygame.draw.line(self.screen, self.color, (102, config.HEIGHT-30), (102, config.HEIGHT-12), 2)
         pygame.draw.line(self.screen, self.color, (102, config.HEIGHT-12), (157, config.HEIGHT-12), 2)
         pygame.draw.line(self.screen, self.color, (157, config.HEIGHT-30), (157, config.HEIGHT-12), 2)
         
+    def get_image(self, path):
+        # global _image_library
+        image = self._image_library.get(path)
+        if image == None:
+                canonicalized_path = path.replace('/', os.sep).replace('\\', os.sep)
+                image = pygame.image.load(canonicalized_path)
+                self._image_library[path] = image
+        return image
+    
     def onSelection(self):
         self.selections[self.selectionIndex].play()
     
@@ -76,7 +108,7 @@ class media(object):
                         self.selections.append(Song(20, 20, filename, self.color))
                     else:
                         self.selections.append(Song(20, self.selections[self.selections.__len__()-1].y+20, filename, self.color))
-                        print(self.selections[self.selections.__len__()-1].name)
+                        #print(self.selections[self.selections.__len__()-1].name)
                 i += 1
         except FileNotFoundError:
             print("Path not avaiable")
@@ -112,4 +144,7 @@ class Song():
         pygame.mixer.init()
         pygame.mixer.music.load(self.path)
         pygame.mixer.music.play() 
-        self.playng = 
+        playing = self.name
+        print(playing)
+        
+

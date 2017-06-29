@@ -21,9 +21,10 @@ EVENTS = {
 }
 
 WEATHER_ICON = {
-	'Clear': "F:/Java/Pip-Boy/Pip-Boy/Pip-Boy/images/sunny.png",
-	'Clouds': "F:/Java/Pip-Boy/Pip-Boy/Pip-Boy/images/cloudy.png", 
-	'rainy':"/images/rainy.png"
+	'Clear': "images/weather_icons/005-weather.png",
+	'Clouds':"images/weather_icons/007-cloudy.png", 
+	'rainy':"images/weather_icons/008-rain.png",
+	'temp': "images/weather_icons/weather.png"
 	}
 
 ACTIONS = {
