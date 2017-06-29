@@ -84,12 +84,15 @@ class media(object):
         pygame.draw.line(self.screen, self.color, (157, config.HEIGHT-30), (157, config.HEIGHT-12), 2)
         
     def get_image(self, path):
-        # global _image_library
-        image = self._image_library.get(path)
-        if image == None:
-                canonicalized_path = path.replace('/', os.sep).replace('\\', os.sep)
-                image = pygame.image.load(canonicalized_path)
-                self._image_library[path] = image
+        try:
+            # global _image_library
+            image = self._image_library.get(path)
+            if image == None:
+                    canonicalized_path = path.replace('/', os.sep).replace('\\', os.sep)
+                    image = pygame.image.load(canonicalized_path)
+                    self._image_library[path] = image
+        except Exception:
+            print("Immagine non trovata")
         return image
     
     def onSelection(self):
