@@ -58,7 +58,7 @@ if __name__ == '__main__':
                 selected_menu = selected_menu - 1
                 menu_list[selected_menu].renderInterface()
                 print("Menu %n %n", selected_menu, menu_list.__len__())
-        for event in pygame.event.get():
+        """for event in pygame.event.get():
             if event.type == pygame.QUIT:
                     done = True
             if event.key == pygame.K_DOWN:
@@ -79,7 +79,7 @@ if __name__ == '__main__':
             if event.key == pygame.K_RETURN:
                 if selected_menu == 4:
                     menu_list[selected_menu].onDecrement()
-                        
+                        """
         pygame.display.flip()
         delay(100)
     
