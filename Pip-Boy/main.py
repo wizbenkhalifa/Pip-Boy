@@ -26,6 +26,7 @@ left = 0
 right = 0
 pygame.init()
 screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
+pygame.FULLSCREEN
 done = False
 selected_menu = 0
 global menu_list
