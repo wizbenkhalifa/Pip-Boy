@@ -30,6 +30,7 @@ if __name__ == '__main__':
     left = 0
     right = 0
     GPIO = GPIOT(left, right)
+    GPIO.start()
     while not done:
         menu_list[selected_menu].renderInterface()
         scanlines.run()
