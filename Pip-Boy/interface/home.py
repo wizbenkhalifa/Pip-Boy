@@ -59,7 +59,9 @@ class home(object):
             img = pygame.transform.scale(img, (25, 30))
             self.screen.blit(img,(350,195))
         except Exception:
-            print()
+            img = self.get_image(os.path.join(dir, config.WEATHER_ICON['Clouds']))
+            img = pygame.transform.scale(img, (125, 125))
+            self.screen.blit(img,(300,55))
         
         label = self.font.render(self.temperature, 1, self.color)
         self.screen.blit(label, (373, 198))
