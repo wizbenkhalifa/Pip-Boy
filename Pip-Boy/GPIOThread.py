@@ -7,6 +7,7 @@ Created on Jun 29, 2017
 import threading
 import time
 import RPi.GPIO as GPIO
+from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)
@@ -36,4 +37,5 @@ class GPIOT(threading.Thread):
                 self.right =1
                 print(self.left)
                 print(self.right)
+            sleep(0.1)
        
