@@ -93,5 +93,5 @@ if __name__ == '__main__':
                     menu_list[selected_menu].onDecrement()
                         """
         pygame.display.flip()
-        delay(100)
+        delay(60)
     
